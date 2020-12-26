@@ -20,7 +20,7 @@ Main limitations being:
 
 ## Proposed Solution
 
-Replicate file structure of my playlists, converting everything to mp3 and renaming each file adding BPM info as a prefix.
+Replicate file structure of my playlists, converting everything to mp3 and renaming each file adding BPM info as a prefix. We can also take full advantage of id3v2 tags like track _title_ and _artist_
 
 `${file_dir}/${bpm}-${artist}-${title}.mp3`
 
