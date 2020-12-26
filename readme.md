@@ -13,8 +13,8 @@ They are quite common and cheap but are somewhat limited compared to current day
 
 Main limitations being:
 - UI, only able to display file names and folders, by alphabetical order, on a tiny led screen.
-- BPM is a crucial datapoint for selecting track in a DJ set and is not being displayed
-- Only supported file format is .mp3
+- BPM is a crucial datapoint for selecting tracks in a DJ set and is not being displayed.
+- Only supported file format is mp3.
 
 ![CDj-400](https://www.pioneerdj.com/-/media/pioneerdj/images/products/player/cdj-400/cdj-400-main.png?h=240&w=320&hash=629C95F1CF6F54AB9D0EBA5717579B6E.png)
 
