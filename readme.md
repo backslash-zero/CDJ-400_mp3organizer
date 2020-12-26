@@ -1,4 +1,4 @@
-# CDJ-400 Mp3 Helper
+# CDJ-400 Mp3 Organiser
 
 ## Usage
 
