@@ -8,7 +8,7 @@
 
 ## Problem
 
-Pioneers CDJ 400 are digital music players for djying, and were the model able to play tracks from a USB drive.
+Pioneers CDJ 400 are digital music players for djying, and were the first model able to play tracks from a USB drive.
 They are quite common and cheap but are somewhat limited compared to current day CDJs.
 
 Main limitations being:
