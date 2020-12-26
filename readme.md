@@ -22,6 +22,8 @@ Main limitations being:
 
 Replicate file structure of my playlists, converting everything to mp3 and renaming each file adding BPM info as a prefix.
 
+`${file_dir}/${bpm}-${artist}-${title}.mp3`
+
 BPM data should be displayed in a three digit format, so that they are automatically ordered incrementaly:
 - 090 
 - 125
