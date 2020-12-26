@@ -22,6 +22,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+arg_checks()
+{
+    if [[ $# -eq 0 ]] ;
+    then
+        echo "No arguments supplied"
+        exit 1
+    fi
+}
+
 cleanup_file_names()
 {
     SAVEIFS=$IFS; IFS=$(echo -en "\n\b"); for i in $(find . -type f  -name "*[\!\,\[\]\;\>\<\@\$\#\&\(\)\?\\\%\ ]*"); do mv "$i" ${i//[][!,\;><\@\$\#\&\(\)\?\\\%\ ]/_}; done; IFS=$SAVEIFS
@@ -100,8 +109,6 @@ enable_dotglob()
     then
         echo "shopt -s dotglob" >> ~/.bashrc;
         echo "dotglob enabled in ~/.bashrc";
-    else
-        echo "dotglob already enabled in ~/.bashrc";
     fi
 }
 
@@ -112,42 +119,36 @@ enable_globstar()
     then
         echo "shopt -s globstar" >> ~/.bashrc;
         echo "globstar enabled in ~/.bashrc";
-    else
-        echo "globstar already enabled in ~/.bashrc";
     fi
 }
 
-base=`pwd`
+# arg_checks;
 enable_globstar;
 check_install_realpath;
-press_enter_to_continue;
 cd $1;
 cleanup_file_names;
-press_enter_to_continue;
+
+# main loop
 find . -type f \( -name "*.m4a" -or -name "*.mp3" \) -exec echo "{}" \;|
 while IFS= read -r file;
 do
-        echo "file: $file";
         format=`echo ${file:(-4)}`;
-        echo "format: $format";
         file_abs=`echo $(realpath "$file")`;
-        echo "file abs: $file_abs";
         file_dir=${file_abs%'/'*};
-        echo "dir: $file_dir";
-        title=`ffprobe -loglevel error -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$file"`;
-        artist=`ffprobe -loglevel error -show_entries format_tags=artist -of default=noprint_wrappers=1:nokey=1 "$file"`;
-        bpm-tag -f $file 2>&1
-        bpm=`ffprobe -loglevel error -show_entries format_tags=TBPM -of default=noprint_wrappers=1:nokey=1 "$file"`;
-        bpm=${bpm%.*};
-        bpm=`printf %03d $bpm`
-        echo "title: $title";
-        echo "artist: $artist";
-        echo "bpm: $bpm";
+        title=`ffprobe -loglevel error -show_entries format_tags=title -of default=noprint_wrappers=1:nokey=1 "$file"` 
+        artist=`ffprobe -loglevel error -show_entries format_tags=artist -of default=noprint_wrappers=1:nokey=1 "$file"` 
         if [[ $format == ".m4a" ]];
         then
-            ffmpeg -i "$file" -hide_banner -c:a libmp3lame -q:a 8 "${file_dir}/${bpm}-${artist}-${title}.mp3" -nostdin;
+            newfile="${file_dir}/tmp.mp3"
+            ffmpeg -i "$file" -hide_banner -loglevel fatal -c:a libmp3lame -q:a 8 "$newfile" -nostdin 2>&1 > /dev/null
             rm $file;
         else
-            mv $file "${file_dir}/${bpm}-${artist}-${title}.mp3";
+            newfile=$file
         fi
+        bpm-tag -f $newfile 2>&1 > /dev/null
+        bpm=`ffprobe -loglevel error -show_entries format_tags=TBPM -of default=noprint_wrappers=1:nokey=1 "$newfile"` 2>&1 > /dev/null
+        bpm=${bpm%.*};
+        bpm=`printf %03d $bpm`
+        mv $newfile "${file_dir}/${bpm}-${artist}-${title}.mp3";
+        echo "✅ Created new file: ${bpm}-${artist}-${title}.mp3"
 done
