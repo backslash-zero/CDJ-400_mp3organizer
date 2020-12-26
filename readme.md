@@ -35,7 +35,7 @@ For every file:
 - Converting to Mp3 if not done already
 - Get BPM and add to meta-tag and as a prefix to filename.
 
-_for instance_
+## Example
 ```
 ├── 0 The Beatles - ,All My Loving.m4a
 ├── 01 Meditation 4.mp3
