@@ -8,7 +8,7 @@
 
 ## Problem
 
-Pioneers CDJ 400 were the first generation able to play track from a USB drive.
+Pioneers CDJ 400 are digital music players for djying, and were the model able to play tracks from a USB drive.
 They are quite common and cheap but are somewhat limited compared to current day CDJs.
 
 Main limitations being:
@@ -16,7 +16,7 @@ Main limitations being:
 - BPM is a crucial datapoint for selecting track in a DJ set
 - Only supported file format is .mp3
 
-![CDj-400](https://www.pioneerdj.com/-/media/pioneerdj/images/products/player/cdj-400/cdj-400-main.png?h=240&w=320&hash=629C95F1CF6F54AB9D0EBA5717579B6E)
+![CDj-400](https://www.pioneerdj.com/-/media/pioneerdj/images/products/player/cdj-400/cdj-400-main.png?h=240&w=320&hash=629C95F1CF6F54AB9D0EBA5717579B6E.png)
 
 ## Proposed Solution
 
