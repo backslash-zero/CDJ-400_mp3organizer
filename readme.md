@@ -35,6 +35,51 @@ For every file:
 - Converting to Mp3 if not done already
 - Get BPM and add to meta-tag and as a prefix to filename.
 
+_for instance_
+```
+├── 0 The Beatles - ,All My Loving.m4a
+├── 01 Meditation 4.mp3
+├── 18 All You Need Is Love.m4a
+├── 3-08 All I Need.mp3
+├── folder1
+│   ├── 10 Alberto Balsalm.mp3
+│   └── AkaFrank ft. Jay Ant, Iamsu! - Lots [Prod. HIMTB Music] [Thizzler.com].m4a
+├── folder2
+│   ├── 0 The Beatles - ,All My Loving.m4a
+│   ├── 18 All You Need Is Love.m4a
+│   ├── 3-08 All I Need.mp3
+│   └── folder3
+│       ├── 0 The Beatles - ,All My Loving.m4a
+│       ├── 18 All You Need Is Love.m4a
+│       └── 3-08 All I Need.mp3
+└── folder3
+    ├── 0 The Beatles - ,All My Loving.m4a
+    ├── 18 All You Need Is Love.m4a
+    └── 3-08 All I Need.mp3
+```
+becomes
+```
+├── 093-Re:jazz Feat. Lisa Bassenge-All I Need.mp3
+├── 105-The Beatles-All You Need Is Love.mp3
+├── 126-Melchior Productions Ltd.-Meditation 4.mp3
+├── 139-The Beatles-All My Loving.mp3
+├── folder1
+│   ├── 093-Aphex Twin-Alberto Balsalm.mp3
+│   └── 093-Thizzler On The Roof-AkaFrank ft. Jay Ant, Iamsu! - Lots [Prod. HIMTB Music] [Thizzler.com].mp3
+├── folder2
+│   ├── 093-Re:jazz Feat. Lisa Bassenge-All I Need.mp3
+│   ├── 105-The Beatles-All You Need Is Love.mp3
+│   ├── 139-The Beatles-All My Loving.mp3
+│   └── folder3
+│       ├── 093-Re:jazz Feat. Lisa Bassenge-All I Need.mp3
+│       ├── 105-The Beatles-All You Need Is Love.mp3
+│       └── 139-The Beatles-All My Loving.mp3
+└── folder3
+    ├── 093-Re:jazz Feat. Lisa Bassenge-All I Need.mp3
+    ├── 105-The Beatles-All You Need Is Love.mp3
+    └── 139-The Beatles-All My Loving.mp3
+```
+
 ## Dependencies (auto installed)
 
 - FFmpeg: https://github.com/FFmpeg/FFmpeg
